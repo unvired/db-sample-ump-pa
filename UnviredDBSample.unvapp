@@ -1,0 +1,502 @@
+{
+  "Properties": {
+    "PACKAGE": "com.unvired.sample.db",
+    "DESCRIPTION": "Unvired DB Sample",
+    "LANGUAGE": "JAVA",
+    "RELEASE_VERSION": "1.0",
+    "ID": "360dfe5c-7133-4402-9e65-17c6d5e0c50b",
+    "DATA_FORMAT": "XML",
+    "VENDOR": "Unvired",
+    "NAME": "UnviredDBSample",
+    "VERSION": "1.0"
+  },
+  "Systems": [
+    {
+      "Properties": {
+        "PROTOCOL": "http",
+        "SERVER": "192.168.98.160",
+        "APPLICATION": "UnviredDBSample",
+        "USER": "chymedeveloper",
+        "SERVER_ID": "SVR328782931424",
+        "DESCRIPTION": "UMP Server",
+        "AUTH_TOKEN": "ma345n9t3aeihw3qxwcxbbqdig0laqddaxrxss2d",
+        "NAMESPACE": "UNVIRED",
+        "TYPE": "ME",
+        "SYNC_PORT": "8080",
+        "PASSWORD": "",
+        "NAME": "ME"
+      },
+      "Metadata": {
+        "BusinessEntity": [
+          {
+            "NAME": "CONTACT",
+            "HEADER": "CONTACT_HEADER",
+            "ATTACHMENT": "false",
+            "SAVE": "true",
+            "TYPE": "Application"
+          }
+        ]
+      },
+      "Types": [
+        {
+          "Properties": {
+            "NAME": "CONTACT",
+            "DESCRIPTION": "Contact"
+          },
+          "Element": [
+            {
+              "Properties": {
+                "DESCRIPTION": "Contact",
+                "DECORATION": "",
+                "NAME": "CONTACT",
+                "TYPE": "Complex"
+              },
+              "Element": [
+                {
+                  "Properties": {
+                    "DESCRIPTION": "Contact Details",
+                    "NAME": "CONTACT_HEADER",
+                    "TYPE": "Complex"
+                  },
+                  "Element": [
+                    {
+                      "Properties": {
+                        "FRACTION": "0",
+                        "MANDATORY": "true",
+                        "LENGTH": "10",
+                        "CLIENT_TYPE": "INTEGER",
+                        "XSD_TYPE": "INT",
+                        "KEY": "true",
+                        "DEFAULT": "",
+                        "DESCRIPTION": "Contact Id",
+                        "NATIVE_TYPE": "4",
+                        "TYPE": "Simple",
+                        "NAME": "ContactId"
+                      }
+                    },
+                    {
+                      "Properties": {
+                        "FRACTION": "0",
+                        "LENGTH": "50",
+                        "CLIENT_TYPE": "TEXT",
+                        "XSD_TYPE": "STRING",
+                        "DESCRIPTION": "Contact Name",
+                        "DEFAULT": "",
+                        "NATIVE_TYPE": "12",
+                        "TYPE": "Simple",
+                        "NAME": "ContactName"
+                      }
+                    },
+                    {
+                      "Properties": {
+                        "FRACTION": "0",
+                        "LENGTH": "10",
+                        "CLIENT_TYPE": "TEXT",
+                        "XSD_TYPE": "STRING",
+                        "DESCRIPTION": "Phone",
+                        "DEFAULT": "",
+                        "NATIVE_TYPE": "12",
+                        "TYPE": "Simple",
+                        "NAME": "Phone"
+                      }
+                    },
+                    {
+                      "Properties": {
+                        "FRACTION": "0",
+                        "LENGTH": "50",
+                        "CLIENT_TYPE": "TEXT",
+                        "XSD_TYPE": "STRING",
+                        "DESCRIPTION": "Email",
+                        "DEFAULT": "",
+                        "NATIVE_TYPE": "12",
+                        "TYPE": "Simple",
+                        "NAME": "Email"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "Functions": [
+        {
+          "Properties": {
+            "ID": "UNVIREDDBSAMPLE_PA_CREATE_CONTACT",
+            "REMOTE_ENABLE": "No",
+            "DESCRIPTION": "Create Contact",
+            "ACTION": "Create",
+            "NAME": "CREATE_CONTACT",
+            "TYPE": "Application"
+          },
+          "Input": [
+            "CONTACT"
+          ],
+          "Output": [],
+          "Interfaces": [
+            {
+              "SYSTEM": "UNVIRED_DB_SAMPLE",
+              "FUNCTION": "JDBC_EXECUTE"
+            }
+          ]
+        },
+        {
+          "Properties": {
+            "ID": "UNVIREDDBSAMPLE_PA_GET_CONTACT",
+            "REMOTE_ENABLE": "No",
+            "DESCRIPTION": "Get Contact",
+            "ACTION": "Get",
+            "NAME": "GET_CONTACT",
+            "TYPE": "Application"
+          },
+          "Input": [
+            "CONTACT"
+          ],
+          "Output": [
+            "CONTACT"
+          ],
+          "Interfaces": [
+            {
+              "SYSTEM": "UNVIRED_DB_SAMPLE",
+              "FUNCTION": "JDBC_EXECUTE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Properties": {
+        "PORT": "3306",
+        "SERVER": "192.168.98.201",
+        "DATABASE": "unvired_sample",
+        "USER": "root",
+        "DESCRIPTION": "Unvired DB Sample",
+        "TYPE": "MYSQL",
+        "NAME": "UNVIRED_DB_SAMPLE",
+        "PASSWORD": "",
+        "IMAGE": "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"
+      },
+      "Metadata": {
+        "catalog": "unvired_sample",
+        "schema": "",
+        "Tables": [
+          {
+            "NAME": "contact",
+            "DESCRIPTION": "Contact",
+            "TYPE": "TABLE",
+            "Columns": [
+              {
+                "INDEX": "1",
+                "NAME": "ContactId",
+                "DESCRIPTION": "",
+                "DATA_TYPE": "4",
+                "UDT_TYPE": "INT",
+                "SIZE": "10",
+                "KEY": "true",
+                "NULLABLE": "false",
+                "DEFAULT": ""
+              },
+              {
+                "INDEX": "2",
+                "NAME": "ContactName",
+                "DESCRIPTION": "",
+                "DATA_TYPE": "12",
+                "UDT_TYPE": "VARCHAR",
+                "SIZE": "50",
+                "KEY": "false",
+                "NULLABLE": "true",
+                "DEFAULT": ""
+              },
+              {
+                "INDEX": "3",
+                "NAME": "Phone",
+                "DESCRIPTION": "",
+                "DATA_TYPE": "12",
+                "UDT_TYPE": "VARCHAR",
+                "SIZE": "10",
+                "KEY": "false",
+                "NULLABLE": "true",
+                "DEFAULT": ""
+              },
+              {
+                "INDEX": "4",
+                "NAME": "Email",
+                "DESCRIPTION": "",
+                "DATA_TYPE": "12",
+                "UDT_TYPE": "VARCHAR",
+                "SIZE": "50",
+                "KEY": "false",
+                "NULLABLE": "true",
+                "DEFAULT": ""
+              }
+            ],
+            "Relations": []
+          }
+        ],
+        "Procedures": [],
+        "Packages": []
+      },
+      "Types": [
+        {
+          "Properties": {
+            "NAME": "unvired_sample",
+            "DESCRIPTION": "Database Schema"
+          },
+          "Element": [
+            {
+              "Properties": {
+                "DESCRIPTION": "",
+                "DECORATION": "",
+                "NAME": "unvired_sample",
+                "TYPE": "Complex"
+              },
+              "Element": [
+                {
+                  "Properties": {
+                    "DESCRIPTION": "Contact",
+                    "NAME": "contact",
+                    "TYPE": "Complex"
+                  },
+                  "Element": [
+                    {
+                      "Properties": {
+                        "DEFAULT": "",
+                        "FRACTION": "0",
+                        "DESCRIPTION": "",
+                        "NATIVE_TYPE": "4",
+                        "LENGTH": "10",
+                        "NAME": "ContactId",
+                        "XSD_TYPE": "INT",
+                        "TYPE": "Simple"
+                      }
+                    },
+                    {
+                      "Properties": {
+                        "DEFAULT": "",
+                        "FRACTION": "0",
+                        "DESCRIPTION": "",
+                        "NATIVE_TYPE": "12",
+                        "LENGTH": "50",
+                        "NAME": "ContactName",
+                        "XSD_TYPE": "STRING",
+                        "TYPE": "Simple"
+                      }
+                    },
+                    {
+                      "Properties": {
+                        "DEFAULT": "",
+                        "FRACTION": "0",
+                        "DESCRIPTION": "",
+                        "NATIVE_TYPE": "12",
+                        "LENGTH": "10",
+                        "NAME": "Phone",
+                        "XSD_TYPE": "STRING",
+                        "TYPE": "Simple"
+                      }
+                    },
+                    {
+                      "Properties": {
+                        "DEFAULT": "",
+                        "FRACTION": "0",
+                        "DESCRIPTION": "",
+                        "NATIVE_TYPE": "12",
+                        "LENGTH": "50",
+                        "NAME": "Email",
+                        "XSD_TYPE": "STRING",
+                        "TYPE": "Simple"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "Functions": [
+        {
+          "Properties": {
+            "DESCRIPTION": "Database Operation",
+            "NAME": "JDBC_EXECUTE",
+            "TYPE": "Application"
+          },
+          "Input": [
+            "unvired_sample"
+          ],
+          "Output": [
+            "unvired_sample"
+          ]
+        }
+      ]
+    }
+  ],
+  "Devices": [
+    {
+      "Properties": {
+        "DESCRIPTION": "iPhone",
+        "NAME": "IPHONE",
+        "TYPE": "IPHONE"
+      }
+    },
+    {
+      "Properties": {
+        "DESCRIPTION": "iPad",
+        "NAME": "IPAD",
+        "TYPE": "IPAD"
+      }
+    },
+    {
+      "Properties": {
+        "DESCRIPTION": "Android Phone",
+        "NAME": "ANDROID_PHONE",
+        "TYPE": "ANDROID_PHONE"
+      }
+    },
+    {
+      "Properties": {
+        "DESCRIPTION": "Android Tablet",
+        "NAME": "ANDROID_TABLET",
+        "TYPE": "ANDROID_TABLET"
+      }
+    }
+  ],
+  "Mappings": [
+    {
+      "Properties": {
+        "DIRECTION": "Input"
+      },
+      "Source": {
+        "SYSTEM": "ME",
+        "FUNCTION": "CREATE_CONTACT",
+        "TYPE": "CONTACT"
+      },
+      "Destination": {
+        "SYSTEM": "UNVIRED_DB_SAMPLE",
+        "FUNCTION": "JDBC_EXECUTE",
+        "TYPE": "unvired_sample"
+      },
+      "Relations": [
+        {
+          "TYPE": "Root",
+          "FROM": "CONTACT",
+          "TO": "unvired_sample"
+        },
+        {
+          "TYPE": "Header",
+          "FROM": "CONTACT~~CONTACT_HEADER",
+          "TO": "unvired_sample~~contact"
+        },
+        {
+          "TYPE": "HeaderField",
+          "FROM": "CONTACT~~CONTACT_HEADER~~ContactId",
+          "TO": "unvired_sample~~contact~~ContactId"
+        },
+        {
+          "TYPE": "HeaderField",
+          "FROM": "CONTACT~~CONTACT_HEADER~~ContactName",
+          "TO": "unvired_sample~~contact~~ContactName"
+        },
+        {
+          "TYPE": "HeaderField",
+          "FROM": "CONTACT~~CONTACT_HEADER~~Email",
+          "TO": "unvired_sample~~contact~~Email"
+        },
+        {
+          "TYPE": "HeaderField",
+          "FROM": "CONTACT~~CONTACT_HEADER~~Phone",
+          "TO": "unvired_sample~~contact~~Phone"
+        }
+      ]
+    },
+    {
+      "Properties": {
+        "DIRECTION": "Input"
+      },
+      "Source": {
+        "SYSTEM": "ME",
+        "FUNCTION": "GET_CONTACT",
+        "TYPE": "CONTACT"
+      },
+      "Destination": {
+        "SYSTEM": "UNVIRED_DB_SAMPLE",
+        "FUNCTION": "JDBC_EXECUTE",
+        "TYPE": "unvired_sample"
+      },
+      "Relations": [
+        {
+          "TYPE": "Root",
+          "FROM": "CONTACT",
+          "TO": "unvired_sample"
+        },
+        {
+          "TYPE": "Header",
+          "FROM": "CONTACT~~CONTACT_HEADER",
+          "TO": "unvired_sample~~contact"
+        },
+        {
+          "TYPE": "HeaderField",
+          "FROM": "CONTACT~~CONTACT_HEADER~~ContactName",
+          "TO": "unvired_sample~~contact~~ContactName"
+        }
+      ]
+    },
+    {
+      "Properties": {
+        "DIRECTION": "Output"
+      },
+      "Source": {
+        "SYSTEM": "ME",
+        "FUNCTION": "GET_CONTACT",
+        "TYPE": "CONTACT"
+      },
+      "Destination": {
+        "SYSTEM": "UNVIRED_DB_SAMPLE",
+        "FUNCTION": "JDBC_EXECUTE",
+        "TYPE": "unvired_sample"
+      },
+      "Relations": [
+        {
+          "TYPE": "Root",
+          "FROM": "CONTACT",
+          "TO": "unvired_sample"
+        },
+        {
+          "TYPE": "Header",
+          "FROM": "CONTACT~~CONTACT_HEADER",
+          "TO": "unvired_sample~~contact"
+        },
+        {
+          "TYPE": "HeaderField",
+          "FROM": "CONTACT~~CONTACT_HEADER~~ContactId",
+          "TO": "unvired_sample~~contact~~ContactId"
+        },
+        {
+          "TYPE": "HeaderField",
+          "FROM": "CONTACT~~CONTACT_HEADER~~ContactName",
+          "TO": "unvired_sample~~contact~~ContactName"
+        },
+        {
+          "TYPE": "HeaderField",
+          "FROM": "CONTACT~~CONTACT_HEADER~~Email",
+          "TO": "unvired_sample~~contact~~Email"
+        },
+        {
+          "TYPE": "HeaderField",
+          "FROM": "CONTACT~~CONTACT_HEADER~~Phone",
+          "TO": "unvired_sample~~contact~~Phone"
+        }
+      ]
+    }
+  ],
+  "DebugSettings": {
+    "AUTH_TOKEN": "s7gmouk1gk55q6n83skxyb9b5f6rx7v902cwsu3r",
+    "MUSRID": "testuser",
+    "FUSRID": "testandroid"
+  },
+  "Decorations": [],
+  "Events": [],
+  "Commands": [],
+  "Recipes": [],
+  "Conversations": []
+}
