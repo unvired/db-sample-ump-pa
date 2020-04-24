@@ -1,4 +1,4 @@
-//	Generated using Unvired Modeller - Build R-4.000.0094
+//	Generated using Unvired Modeller - Build R-4.000.0120
 package com.unvired.sample.db.gen.pa;
 
 import com.unvired.sample.db.gen.utils.BEUtility;
@@ -27,8 +27,8 @@ public abstract class ABSTRACT_CREATE_CONTACT extends AppService {
 
 		entity.setCONTACTID(header.getContactId());
 		entity.setCONTACTNAME(header.getContactName());
-		entity.setEMAIL(header.getEmail());
 		entity.setPHONE(header.getPhone());
+		entity.setEMAIL(header.getEmail());
 
 		return entity;
 	}

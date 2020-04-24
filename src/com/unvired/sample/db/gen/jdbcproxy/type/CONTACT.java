@@ -1,4 +1,4 @@
-//	Generated using Unvired Modeller - Build R-4.000.0094
+//	Generated using Unvired Modeller - Build R-4.000.0120
 package com.unvired.sample.db.gen.jdbcproxy.type;
 
 import com.unvired.jdbc.meta.ColumnMeta;
@@ -13,11 +13,11 @@ public class CONTACT extends Row
 
 	static
 	{
-		METADATA = new TableMeta(Database.mysql,"unvired_sample","","contact","TABLE","Contact","com.unvired.sample.db.gen.jdbcproxy.type.CONTACT");
+		METADATA = new TableMeta(Database.mysql,"unvired_sample","","contact","TABLE","","com.unvired.sample.db.gen.jdbcproxy.type.CONTACT");
 		METADATA.addColumn(new ColumnMeta(Database.mysql,1,"ContactId","",4,"INT",10,true,false,""));
-		METADATA.addColumn(new ColumnMeta(Database.mysql,2,"ContactName","",12,"VARCHAR",50,false,true,""));
-		METADATA.addColumn(new ColumnMeta(Database.mysql,3,"Phone","",12,"VARCHAR",10,false,true,""));
-		METADATA.addColumn(new ColumnMeta(Database.mysql,4,"Email","",12,"VARCHAR",50,false,true,""));
+		METADATA.addColumn(new ColumnMeta(Database.mysql,2,"ContactName","",12,"VARCHAR",100,false,false,""));
+		METADATA.addColumn(new ColumnMeta(Database.mysql,3,"Phone","",12,"VARCHAR",12,false,false,""));
+		METADATA.addColumn(new ColumnMeta(Database.mysql,4,"Email","",12,"VARCHAR",200,false,false,""));
 	}
 
 	public static String COLUMN_CONTACTID = "ContactId";

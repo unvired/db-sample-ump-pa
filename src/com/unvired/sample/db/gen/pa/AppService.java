@@ -43,14 +43,14 @@ public abstract class AppService implements IProcessAgent {
 	* @param tableName	Name of the DB table
 	* @return Handle to {@link com.unvired.jdbc.meta.TableMeta}
 	*/
-	public com.unvired.jdbc.meta.TableMeta jdbcTableMetaUNVIRED_DB_SAMPLE(String tableName) {
+	public com.unvired.jdbc.meta.TableMeta jdbcTableMetaUNVIRED_DB_SAMPLE_SYSTEM(String tableName) {
 		com.unvired.jdbc.meta.TableMeta tableMeta = null;
 		IJDBCRequest jdbcRequest = (IJDBCRequest) process.createRequest(RequestType.JDBC);
 		jdbcRequest.setRequestType(IJDBCRequest.Mode.TableMeta);
 		jdbcRequest.setTableName(tableName);
 
 		IJDBCResponse jdbcResponse = (IJDBCResponse) process.getService().submitRequest(jdbcRequest,
-				Constant.UNVIREDDBSAMPLE_UNVIRED_DB_SAMPLE_JDBC_EXECUTE);
+				Constant.UNVIRED_DB_SAMPLE_UNVIRED_DB_SAMPLE_SYSTEM_JDBC_EXECUTE);
 		if (jdbcResponse.isSuccess()) {
 			tableMeta = jdbcResponse.getTableMeta();
 		}
@@ -63,7 +63,7 @@ public abstract class AppService implements IProcessAgent {
 	 * @param condClause	Selection criteria to identify rows for locking in the table
 	 * @return List of rows that were successfully locked for update
 	 */
-	public List<com.unvired.jdbc.proxy.Row> jdbcLockRowsUNVIRED_DB_SAMPLE(com.unvired.jdbc.proxy.Row type,
+	public List<com.unvired.jdbc.proxy.Row> jdbcLockRowsUNVIRED_DB_SAMPLE_SYSTEM(com.unvired.jdbc.proxy.Row type,
 			com.unvired.jdbc.util.ConditionClause condClause) {
 		List<com.unvired.jdbc.proxy.Row> lockedRows = null;
 		IJDBCRequest jdbcRequest = (IJDBCRequest) process.createRequest(RequestType.JDBC);
@@ -71,7 +71,7 @@ public abstract class AppService implements IProcessAgent {
 		jdbcRequest.setLock(type, condClause);
 
 		IJDBCResponse jdbcResponse = (IJDBCResponse) process.getService().submitRequest(jdbcRequest,
-				Constant.UNVIREDDBSAMPLE_UNVIRED_DB_SAMPLE_JDBC_EXECUTE);
+				Constant.UNVIRED_DB_SAMPLE_UNVIRED_DB_SAMPLE_SYSTEM_JDBC_EXECUTE);
 		if (jdbcResponse.isSuccess()) {
 			lockedRows = jdbcResponse.getLockOutput();
 		}
@@ -87,8 +87,9 @@ public abstract class AppService implements IProcessAgent {
 	 * @param offset		Value to indicate the offset in the result set to start the fetch from
 	 * @return 				List of rows that match the selection criteria
 	 */
-	public List<com.unvired.jdbc.proxy.Row> jdbcQueryUNVIRED_DB_SAMPLE(com.unvired.jdbc.util.ConditionClause condition,
-			List<String> columns, com.unvired.jdbc.proxy.Row type, int limit, int offset) {
+	public List<com.unvired.jdbc.proxy.Row> jdbcQueryUNVIRED_DB_SAMPLE_SYSTEM(
+			com.unvired.jdbc.util.ConditionClause condition, List<String> columns, com.unvired.jdbc.proxy.Row type,
+			int limit, int offset) {
 
 		ArrayList<com.unvired.jdbc.proxy.Row> rowList = new ArrayList<com.unvired.jdbc.proxy.Row>();
 
@@ -98,7 +99,7 @@ public abstract class AppService implements IProcessAgent {
 
 		//	Call
 		IJDBCResponse jdbcResponse = (IJDBCResponse) process.getService().submitRequest(jdbcRequest,
-				Constant.UNVIREDDBSAMPLE_UNVIRED_DB_SAMPLE_JDBC_EXECUTE);
+				Constant.UNVIRED_DB_SAMPLE_UNVIRED_DB_SAMPLE_SYSTEM_JDBC_EXECUTE);
 
 		if (jdbcResponse.isSuccess()) {
 			List<com.unvired.jdbc.proxy.Row> result = jdbcResponse.getQueryOutput();
@@ -119,8 +120,8 @@ public abstract class AppService implements IProcessAgent {
 	 * @param type			{@link com.unvired.jdbc.proxy.Row} instance describing the table to be queried
 	 * @return 				List of rows that match the selection criteria
 	 */
-	public List<com.unvired.jdbc.proxy.Row> jdbcQueryUNVIRED_DB_SAMPLE(com.unvired.jdbc.util.ConditionClause condition,
-			List<String> columns, com.unvired.jdbc.proxy.Row type) {
+	public List<com.unvired.jdbc.proxy.Row> jdbcQueryUNVIRED_DB_SAMPLE_SYSTEM(
+			com.unvired.jdbc.util.ConditionClause condition, List<String> columns, com.unvired.jdbc.proxy.Row type) {
 		ArrayList<com.unvired.jdbc.proxy.Row> rowList = new ArrayList<com.unvired.jdbc.proxy.Row>();
 
 		IJDBCRequest jdbcRequest = (IJDBCRequest) process.createRequest(RequestType.JDBC);
@@ -129,7 +130,7 @@ public abstract class AppService implements IProcessAgent {
 
 		//	Call
 		IJDBCResponse jdbcResponse = (IJDBCResponse) process.getService().submitRequest(jdbcRequest,
-				Constant.UNVIREDDBSAMPLE_UNVIRED_DB_SAMPLE_JDBC_EXECUTE);
+				Constant.UNVIRED_DB_SAMPLE_UNVIRED_DB_SAMPLE_SYSTEM_JDBC_EXECUTE);
 
 		if (jdbcResponse.isSuccess()) {
 			List<com.unvired.jdbc.proxy.Row> result = jdbcResponse.getQueryOutput();
@@ -148,7 +149,7 @@ public abstract class AppService implements IProcessAgent {
 	 * @param nativeSQL		Native query that is specific to the DB being used
 	 * @return 				List of rows that match the selection criteria
 	 */
-	public Iterator<List<com.unvired.jdbc.proxy.Row>> jdbcQueryNativeUNVIRED_DB_SAMPLE(String nativeSQL) {
+	public Iterator<List<com.unvired.jdbc.proxy.Row>> jdbcQueryNativeUNVIRED_DB_SAMPLE_SYSTEM(String nativeSQL) {
 		com.unvired.jdbc.proxy.NativeSQL nativeSQLInput = new com.unvired.jdbc.proxy.NativeSQL(nativeSQL);
 		com.unvired.jdbc.proxy.NativeSQL nativeSQLOutput = null;
 		IJDBCRequest jdbcRequest = (IJDBCRequest) process.createRequest(RequestType.JDBC);
@@ -157,7 +158,7 @@ public abstract class AppService implements IProcessAgent {
 
 		//	Call
 		IJDBCResponse jdbcResponse = (IJDBCResponse) process.getService().submitRequest(jdbcRequest,
-				Constant.UNVIREDDBSAMPLE_UNVIRED_DB_SAMPLE_JDBC_EXECUTE);
+				Constant.UNVIRED_DB_SAMPLE_UNVIRED_DB_SAMPLE_SYSTEM_JDBC_EXECUTE);
 
 		if (jdbcResponse.isSuccess()) {
 			nativeSQLOutput = jdbcResponse.getNativeSQLOutput();
@@ -172,11 +173,11 @@ public abstract class AppService implements IProcessAgent {
 	 * This function is used to start a JDBC transaction  
 	 * @return True if the operation succeeded or false otherwise
 	 */
-	public boolean jdbcStartTransactionUNVIRED_DB_SAMPLE() {
+	public boolean jdbcStartTransactionUNVIRED_DB_SAMPLE_SYSTEM() {
 		IJDBCRequest jdbcRequest = (IJDBCRequest) process.createRequest(RequestType.JDBC);
 		jdbcRequest.setRequestType(IJDBCRequest.Mode.StartTransaction);
 		IJDBCResponse jdbcResponse = (IJDBCResponse) process.getService().submitRequest(jdbcRequest,
-				Constant.UNVIREDDBSAMPLE_UNVIRED_DB_SAMPLE_JDBC_EXECUTE);
+				Constant.UNVIRED_DB_SAMPLE_UNVIRED_DB_SAMPLE_SYSTEM_JDBC_EXECUTE);
 		boolean success = jdbcResponse.isSuccess();
 		if (!success)
 			process.getInfoMessageList().addAll(jdbcResponse.getInfoMessages());
@@ -187,11 +188,11 @@ public abstract class AppService implements IProcessAgent {
 	 * This function is used to commit a JDBC transaction  
 	 * @return True if the operation succeeded or false otherwise
 	 */
-	public boolean jdbcCommitTransactionUNVIRED_DB_SAMPLE() {
+	public boolean jdbcCommitTransactionUNVIRED_DB_SAMPLE_SYSTEM() {
 		IJDBCRequest jdbcRequest = (IJDBCRequest) process.createRequest(RequestType.JDBC);
 		jdbcRequest.setRequestType(IJDBCRequest.Mode.Commit);
 		IJDBCResponse jdbcResponse = (IJDBCResponse) process.getService().submitRequest(jdbcRequest,
-				Constant.UNVIREDDBSAMPLE_UNVIRED_DB_SAMPLE_JDBC_EXECUTE);
+				Constant.UNVIRED_DB_SAMPLE_UNVIRED_DB_SAMPLE_SYSTEM_JDBC_EXECUTE);
 		boolean success = jdbcResponse.isSuccess();
 		if (!success)
 			process.getInfoMessageList().addAll(jdbcResponse.getInfoMessages());
@@ -202,11 +203,11 @@ public abstract class AppService implements IProcessAgent {
 	 * This function is used to rollback a JDBC transaction  
 	 * @return True if the operation succeeded or false otherwise
 	 */
-	public boolean jdbcRollbackTransactionUNVIRED_DB_SAMPLE() {
+	public boolean jdbcRollbackTransactionUNVIRED_DB_SAMPLE_SYSTEM() {
 		IJDBCRequest jdbcRequest = (IJDBCRequest) process.createRequest(RequestType.JDBC);
 		jdbcRequest.setRequestType(IJDBCRequest.Mode.Rollback);
 		IJDBCResponse jdbcResponse = (IJDBCResponse) process.getService().submitRequest(jdbcRequest,
-				Constant.UNVIREDDBSAMPLE_UNVIRED_DB_SAMPLE_JDBC_EXECUTE);
+				Constant.UNVIRED_DB_SAMPLE_UNVIRED_DB_SAMPLE_SYSTEM_JDBC_EXECUTE);
 		boolean success = jdbcResponse.isSuccess();
 		if (!success)
 			process.getInfoMessageList().addAll(jdbcResponse.getInfoMessages());
@@ -218,12 +219,13 @@ public abstract class AppService implements IProcessAgent {
 	 * @param operation Type of operation to perform on the table row
 	 * @return True if the operation succeeded or false otherwise
 	 */
-	public boolean jdbcExecuteUNVIRED_DB_SAMPLE(com.unvired.jdbc.proxy.Row row, IJDBCRequest.Operation operation) {
+	public boolean jdbcExecuteUNVIRED_DB_SAMPLE_SYSTEM(com.unvired.jdbc.proxy.Row row,
+			IJDBCRequest.Operation operation) {
 		IJDBCRequest jdbcRequest = (IJDBCRequest) process.createRequest(RequestType.JDBC);
 		jdbcRequest.setRequestType(IJDBCRequest.Mode.InsUpdDel);
 		jdbcRequest.setRow(operation, row);
 		IJDBCResponse jdbcResponse = (IJDBCResponse) process.getService().submitRequest(jdbcRequest,
-				Constant.UNVIREDDBSAMPLE_UNVIRED_DB_SAMPLE_JDBC_EXECUTE);
+				Constant.UNVIRED_DB_SAMPLE_UNVIRED_DB_SAMPLE_SYSTEM_JDBC_EXECUTE);
 		boolean success = jdbcResponse.isSuccess();
 		if (!success)
 			process.getInfoMessageList().addAll(jdbcResponse.getInfoMessages());
@@ -236,14 +238,14 @@ public abstract class AppService implements IProcessAgent {
 	 * @param procedure Handle to the {@link com.unvired.jdbc.proxy.Procedure} object containing the stored procedure to execute
 	 * @return Handle to the {@link com.unvired.jdbc.proxy.Procedure} object containing the results from execution
 	 */
-	public com.unvired.jdbc.proxy.Procedure jdbcExecuteProcedureUNVIRED_DB_SAMPLE(IBusinessProcess process,
+	public com.unvired.jdbc.proxy.Procedure jdbcExecuteProcedureUNVIRED_DB_SAMPLE_SYSTEM(IBusinessProcess process,
 			com.unvired.jdbc.proxy.Procedure procedure) {
 		com.unvired.jdbc.proxy.Procedure procedureOut = null;
 		IJDBCRequest jdbcRequest = (IJDBCRequest) process.createRequest(RequestType.JDBC);
 		jdbcRequest.setRequestType(IJDBCRequest.Mode.Procedure);
 		jdbcRequest.setProcedure(procedure);
 		IJDBCResponse jdbcResponse = (IJDBCResponse) process.getService().submitRequest(jdbcRequest,
-				Constant.UNVIREDDBSAMPLE_UNVIRED_DB_SAMPLE_JDBC_EXECUTE);
+				Constant.UNVIRED_DB_SAMPLE_UNVIRED_DB_SAMPLE_SYSTEM_JDBC_EXECUTE);
 		boolean success = jdbcResponse.isSuccess();
 		if (!success)
 			process.getInfoMessageList().addAll(jdbcResponse.getInfoMessages());

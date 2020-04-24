@@ -1,9 +1,8 @@
-//	Generated using Unvired Modeller - Build R-4.000.0039
+//	Generated using Unvired Modeller - Build R-4.000.0120
 package com.unvired.sample.db.pa;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.Vector;
 
 import com.unvired.jdbc.proxy.Row;
 import com.unvired.lib.utility.InfoMessage;
@@ -16,53 +15,32 @@ import com.unvired.sample.db.gen.pa.ABSTRACT_GET_CONTACT;
 public class GET_CONTACT extends ABSTRACT_GET_CONTACT {
 
 	boolean success = false;
-	
-	private String contactId;
 	private String contactName;
-	private Vector<CONTACT> contactList = null;
 	
 	public void execute() {
-
-		try {
-			
-			contactList = new Vector<CONTACT>();
-			contactId = String.valueOf(inputCONTACT.getCONTACT_HEADER().getContactId());
+		
+		try {	
 			contactName = inputCONTACT.getCONTACT_HEADER().getContactName();
-			
-			contactList = getContactDetailsFromDB(contactId, contactName);
-			if (contactList != null && contactList.size() > 0) {
-				for (int i = 0; i < contactList.size(); i++) {
-					CONTACT contact = contactList.elementAt(i);
-					com.unvired.sample.db.gen.be.CONTACT contactBE = new com.unvired.sample.db.gen.be.CONTACT();
-					contactBE.getCONTACT_HEADER().setContactId(Integer.valueOf(contact.getCONTACTID()));
-					contactBE.getCONTACT_HEADER().setContactName(contact.getCONTACTNAME());
-					contactBE.getCONTACT_HEADER().setPhone(contact.getPHONE());
-					contactBE.getCONTACT_HEADER().setEmail(contact.getEMAIL());
-					beList.add(contactBE);
-				}
-			} else {
-				infoMessages.add(new InfoMessage("Contact doesn't exist.", InfoMessageType.APPLICATION,	InfoMessageCategory.FAILURE));
+			CONTACT contact = getContactDetailsFromDB(contactName);
+			if(contact != null) {
+				com.unvired.sample.db.gen.be.CONTACT contactBE = new com.unvired.sample.db.gen.be.CONTACT();
+				contactBE.getCONTACT_HEADER().setContactId(Integer.valueOf(contact.getCONTACTID()));
+				contactBE.getCONTACT_HEADER().setContactName(contact.getCONTACTNAME());
+				contactBE.getCONTACT_HEADER().setPhone(contact.getPHONE());
+				contactBE.getCONTACT_HEADER().setEmail(contact.getEMAIL());
+				beList.add(contactBE);	
+			}else{
+				infoMessages.add(new InfoMessage("Contact doesn't exist.", InfoMessageType.APPLICATION, InfoMessageCategory.FAILURE));				
 			}
 		} catch (Exception e) {
 			infoMessages.add(new InfoMessage(e.getMessage(), InfoMessageType.APPLICATION, InfoMessageCategory.FAILURE));
 		}
 	}
 	
-	private Vector<CONTACT> getContactDetailsFromDB(String contactId, String contactName){
+	private CONTACT getContactDetailsFromDB(String contactName){	
 		
-		String query = "";
-		
-		if(contactId != null && !contactId.isEmpty() && !contactId.equals("null") && contactName != null && !contactName.isEmpty()){
-			query = "SELECT * FROM contact WHERE ContactId = '" + contactId + "' AND ContactName LIKE '%" + contactName + "%'";
-		} else if(contactId != null && !contactId.isEmpty() && !contactId.equals("null")) {
-			query = "SELECT * FROM contact WHERE ContactId = '" + contactId + "'";
-		} else if(contactName != null && !contactName.isEmpty()) {
-			query = "SELECT * FROM contact WHERE ContactName LIKE '%" + contactName + "%'";
-		} else {
-			query = "SELECT * FROM contact";
-		}
-		
-		Iterator<List<Row>> rowIterator = jdbcQueryNativeUNVIRED_DB_SAMPLE(query);
+		String query = "SELECT * FROM contact WHERE ContactName LIKE '%" + contactName + "%'";
+		Iterator<List<Row>> rowIterator = jdbcQueryNativeUNVIRED_DB_SAMPLE_SYSTEM(query);
 
 		List<Row> rows = null;
 		CONTACT contact = null;
@@ -81,11 +59,10 @@ public class GET_CONTACT extends ABSTRACT_GET_CONTACT {
 					contact.setCONTACTID(Integer.valueOf(id));
 					contact.setCONTACTNAME(name);
 					contact.setPHONE(phone);
-					contact.setEMAIL(email);	
-					contactList.add(contact);
+					contact.setEMAIL(email);					
 				}
 	        }
 		}
-		return contactList;
+		return contact;
 	}	
 }
